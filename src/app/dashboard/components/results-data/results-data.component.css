@@ -1,0 +1,20 @@
+.container {
+    margin-left: 16.25rem;
+    margin-right: 1.7rem;
+}
+
+table {
+    width: 100%;
+}
+
+.get-data {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+}
+
+.get-data:hover {
+    background-color: gray;
+
+}

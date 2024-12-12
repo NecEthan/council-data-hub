@@ -1,0 +1,61 @@
+.sidenav {
+    height: 100%;
+    width: 12.5rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #022b5e;
+    overflow-x: hidden;
+    padding: 0rem 1rem;
+}
+
+.service-link {
+    text-decoration: none;
+    font-size: 1rem;
+    color: #EB6E00;
+    display: block;
+    line-height: 1.875rem;
+    display: flex;
+    cursor: pointer;
+}
+
+.service-link:hover {
+    color: #fff;
+}
+
+.title {
+    color: #fff;
+}
+
+.subtitle {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.search {
+    padding: 0.625rem 1.25rem;
+    border: white solid 0.1875rem;
+    color: white;
+}
+
+.http-response-buttons {
+    color: black;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.logout-button {
+    padding: 20px;
+    color: white;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+
+
