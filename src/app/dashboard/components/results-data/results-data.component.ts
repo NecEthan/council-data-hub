@@ -15,7 +15,7 @@ import { IScrapedData } from '../../interfaces/scrapedData.interface';
 export class ResultsDataComponent implements OnInit, OnChanges {
   @Input() scrapedData?: IScrapedData[];
 
-  displayedColumns: string[] = ['id', 'websiteName', 'name', 'address', 'startDate', 'endDate'];
+  displayedColumns: string[] = ['id', 'websiteName', 'name', 'address', 'date'];
 
   dataSource!: MatTableDataSource<any>;
   selectedStartDate = '';
@@ -46,9 +46,8 @@ export class ResultsDataComponent implements OnInit, OnChanges {
   }
 
   onSubmitDate() {
-    this.scrapedData = this.scrapedData?.filter(item => {
-      this.selectedStartDate > item.startDate && this.selectedEndDate < item.endDate
-    })
+    // this.scrapedData = this.scrapedData?.filter(item => {
+    // })
   }
 
   ngAfterViewInit() {
