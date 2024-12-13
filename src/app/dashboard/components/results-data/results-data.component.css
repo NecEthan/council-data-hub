@@ -18,3 +18,34 @@ table {
     background-color: gray;
 
 }
+
+/* Label styling */
+label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  /* Date input styling */
+  input[type="date"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    width: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="date"]:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 8px rgba(63, 81, 181, 0.2);
+  }
+  
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    background-color: #3f51b5;
+    border-radius: 50%;
+    padding: 5px;
+  }

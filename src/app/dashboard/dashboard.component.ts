@@ -25,11 +25,9 @@ export class DashboardComponent implements OnInit{
   }
 
   onClick(websiteName: any) {
-    // const test = this.scrapedService.getScrapedDatabyName(websiteName)
     const test = this.scrapedService.getScrapedDataByName(websiteName);
     test.subscribe({
       next: (res) => {
-        console.log(res)
         this.scrapedData = res
       }
     })
