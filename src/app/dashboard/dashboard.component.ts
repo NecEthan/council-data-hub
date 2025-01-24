@@ -20,13 +20,9 @@ export class DashboardComponent implements OnInit{
     
   }
 
-  setWebsiteName() {
-
-  }
-
   onClick(websiteName: any) {
-    const test = this.scrapedService.getScrapedDataByName(websiteName);
-    test.subscribe({
+    const results = this.scrapedService.getScrapedDataByName(websiteName);
+    results.subscribe({
       next: (res) => {
         this.scrapedData = res
       }

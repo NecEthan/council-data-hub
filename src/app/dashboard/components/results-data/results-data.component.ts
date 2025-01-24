@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { IScrapedData } from '../../interfaces/scrapedData.interface';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-results-data',
@@ -46,8 +47,18 @@ export class ResultsDataComponent implements OnInit, OnChanges {
   }
 
   onSubmitDate() {
-    // this.scrapedData = this.scrapedData?.filter(item => {
-    // })
+    
+    const filteredData = this.scrapedData?.filter((row) => {
+      const rowDate = new Date(row.date);
+      const startDate = new Date(this.selectedStartDate);
+      const endDate = new Date(this.selectedEndDate);
+  
+      return rowDate > startDate && rowDate < endDate;
+    });
+
+    console.log(filteredData)
+    this.dataSource = new MatTableDataSource(filteredData);
+
   }
 
   ngAfterViewInit() {
