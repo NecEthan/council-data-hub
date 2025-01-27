@@ -21,6 +21,17 @@ export class DashboardComponent implements OnInit{
   }
 
   onClick(websiteName: any) {
+
+    if (websiteName === 'all') {
+      const results = this.scrapedService.getScrapedData();
+      results.subscribe({
+        next: (res) => {
+          this.scrapedData = res
+          console.log(res)
+        }
+      })
+    }
+
     const results = this.scrapedService.getScrapedDataByName(websiteName);
     results.subscribe({
       next: (res) => {
