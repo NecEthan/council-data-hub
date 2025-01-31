@@ -35,7 +35,14 @@ export class DashboardComponent implements OnInit{
     const results = this.scrapedService.getScrapedDataByName(websiteName);
     results.subscribe({
       next: (res) => {
+        for (let i=0; i < res.length; i++) {
+          let rawDate = res[i].date;
+          let parsedDate = new Date('20' + rawDate.split('/').reverse().join('-'));
+          res[i].date = parsedDate;
+        }
+     
         this.scrapedData = res
+
       }
     })
   }
