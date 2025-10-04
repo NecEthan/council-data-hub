@@ -85,6 +85,24 @@
   transform: translateY(-1px);
 }
 
+.nav-button.active {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-button.active {
+  background: var(--secondary-orange);
+  border-color: var(--secondary-orange);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.nav-button.active:hover {
+  background: var(--secondary-orange-dark);
+  border-color: var(--secondary-orange-dark);
+}
+
 .nav-button .material-icons {
   font-size: 1.25rem;
 }

@@ -1,0 +1,205 @@
+<div class="settings-container">
+  <!-- Settings Header -->
+  <div class="settings-header">
+    <div class="header-content">
+      <div class="header-text">
+        <h1 class="settings-title">
+          <span class="material-icons title-icon">settings</span>
+          Settings & Configuration
+        </h1>
+        <p class="settings-subtitle">Manage your preferences, data sources, and system configuration</p>
+      </div>
+      
+      <div class="header-actions">
+        <button class="btn btn-secondary" (click)="onResetSettings()">
+          <span class="material-icons">restore</span>
+          Reset to Defaults
+        </button>
+        <button class="btn btn-primary" (click)="onSaveSettings()">
+          <span class="material-icons">save</span>
+          Save Changes
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Content -->
+  <div class="settings-content">
+    <div class="settings-grid">
+      
+      <!-- User Profile Section -->
+      <div class="settings-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="material-icons">account_circle</span>
+            User Profile
+          </h2>
+          <p class="section-description">Manage your personal information and account details</p>
+        </div>
+        
+        <div class="settings-card">
+          <div class="form-group">
+            <label for="userName" class="form-label">Full Name</label>
+            <input 
+              type="text" 
+              id="userName" 
+              class="form-input" 
+              [(ngModel)]="userSettings.name">
+          </div>
+          
+          <div class="form-group">
+            <label for="userEmail" class="form-label">Email Address</label>
+            <input 
+              type="email" 
+              id="userEmail" 
+              class="form-input" 
+              [(ngModel)]="userSettings.email">
+          </div>
+          
+          <div class="form-group">
+            <label for="userRole" class="form-label">Role</label>
+            <select id="userRole" class="form-select" [(ngModel)]="userSettings.role">
+              <option value="Data Analyst">Data Analyst</option>
+              <option value="Administrator">Administrator</option>
+              <option value="Viewer">Viewer</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notifications Section -->
+      <div class="settings-section">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="material-icons">notifications</span>
+            Notifications
+          </h2>
+          <p class="section-description">Control how and when you receive notifications</p>
+        </div>
+        
+        <div class="settings-card">
+          <div class="toggle-group">
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <span class="toggle-label">Email Notifications</span>
+                <span class="toggle-description">Receive updates via email</span>
+              </div>
+              <div class="toggle-switch">
+                <input 
+                  type="checkbox" 
+                  id="emailNotif" 
+                  class="toggle-input" 
+                  [(ngModel)]="userSettings.notifications.email">
+                <label for="emailNotif" class="toggle-slider"></label>
+              </div>
+            </div>
+            
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <span class="toggle-label">Push Notifications</span>
+                <span class="toggle-description">Browser push notifications</span>
+              </div>
+              <div class="toggle-switch">
+                <input 
+                  type="checkbox" 
+                  id="pushNotif" 
+                  class="toggle-input" 
+                  [(ngModel)]="userSettings.notifications.push">
+                <label for="pushNotif" class="toggle-slider"></label>
+              </div>
+            </div>
+            
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <span class="toggle-label">Data Updates</span>
+                <span class="toggle-description">Notify when data is refreshed</span>
+              </div>
+              <div class="toggle-switch">
+                <input 
+                  type="checkbox" 
+                  id="dataUpdates" 
+                  class="toggle-input" 
+                  [(ngModel)]="userSettings.notifications.dataUpdates">
+                <label for="dataUpdates" class="toggle-slider"></label>
+              </div>
+            </div>
+            
+            <div class="toggle-item">
+              <div class="toggle-info">
+                <span class="toggle-label">System Alerts</span>
+                <span class="toggle-description">Important system notifications</span>
+              </div>
+              <div class="toggle-switch">
+                <input 
+                  type="checkbox" 
+                  id="systemAlerts" 
+                  class="toggle-input" 
+                  [(ngModel)]="userSettings.notifications.systemAlerts">
+                <label for="systemAlerts" class="toggle-slider"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Data Sources Section -->
+      <div class="settings-section full-width">
+        <div class="section-header">
+          <h2 class="section-title">
+            <span class="material-icons">cloud_sync</span>
+            Data Sources
+          </h2>
+          <p class="section-description">Monitor and manage your council data connections</p>
+        </div>
+        
+        <div class="settings-card">
+          <div class="data-sources-grid">
+            <div 
+              class="data-source-card" 
+              *ngFor="let source of dataSources">
+              <div class="source-header">
+                <div class="source-info">
+                  <h3 class="source-name">{{ source.name }}</h3>
+                  <div class="source-status" [attr.data-status]="source.status">
+                    <span class="material-icons status-icon">
+                      {{ source.status === 'active' ? 'check_circle' : 
+                         source.status === 'error' ? 'error' : 'pause_circle' }}
+                    </span>
+                    <span class="status-text">{{ source.status | titlecase }}</span>
+                  </div>
+                </div>
+                
+                <div class="source-actions">
+                  <button 
+                    class="action-btn test-btn" 
+                    (click)="onTestConnection(source.name)"
+                    title="Test Connection">
+                    <span class="material-icons">wifi_protected_setup</span>
+                  </button>
+                  <button 
+                    class="action-btn sync-btn" 
+                    (click)="onSyncData(source.name)"
+                    title="Sync Data">
+                    <span class="material-icons">sync</span>
+                  </button>
+                </div>
+              </div>
+              
+              <div class="source-details">
+                <div class="detail-item">
+                  <span class="material-icons">schedule</span>
+                  <span class="detail-label">Last Sync:</span>
+                  <span class="detail-value">{{ source.lastSync }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
