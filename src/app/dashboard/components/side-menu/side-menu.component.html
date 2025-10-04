@@ -1,22 +1,142 @@
-<div class="sidenav">
-    <div class="logo">
-        <h2 class="title">Council Data Hub</h2>
+<div class="sidebar">
+  <!-- Logo Section -->
+  <div class="sidebar-header">
+    <div class="logo-section">
+      <div class="logo-icon">
+        <span class="material-icons">account_balance</span>
+      </div>
+      <div class="logo-text">
+        <h3 class="logo-title">Council Hub</h3>
+        <p class="logo-subtitle">Data Analytics</p>
+      </div>
     </div>
-    <div class="search-section">
-        <p class="search">search</p>
+  </div>
+
+  <!-- Search Section -->
+  <div class="search-section">
+    <div class="search-container">
+      <span class="material-icons search-icon">search</span>
+      <input type="text" placeholder="Search councils..." class="search-input">
     </div>
-    <div class="subtitle">
-        <p>Councils</p>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="sidebar-nav">
+    <div class="nav-section">
+      <h4 class="nav-section-title">
+        <span class="material-icons">location_city</span>
+        Borough Selection
+      </h4>
+      
+      <div class="nav-links">
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'all'"
+          (click)="onClick('all')">
+          <span class="material-icons">select_all</span>
+          <span class="nav-text">All Councils</span>
+          <span class="nav-badge">8</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'richmond'"
+          (click)="onClick('richmond')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Richmond</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'epsom'"
+          (click)="onClick('epsom')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Epsom</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'kingston'"
+          (click)="onClick('kingston')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Kingston</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'southwark'"
+          (click)="onClick('southwark')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Southwark</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'woking'"
+          (click)="onClick('woking')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Woking</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'lambeth'"
+          (click)="onClick('lambeth')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Lambeth</span>
+        </button>
+        
+        <button 
+          class="nav-link" 
+          [class.active]="selectedCouncil === 'hl'"
+          (click)="onClick('hl')">
+          <span class="material-icons">place</span>
+          <span class="nav-text">Hammersmith & Fulham</span>
+        </button>
+      </div>
     </div>
-      <div class="service-link" (click)="onClick('richmond')">Richmond</div>
-      <div class="service-link" (click)="onClick('epsom')">Epsom</div>
-      <div class="service-link" (click)="onClick('kingston')">Kingston</div>
-      <div class="service-link" (click)="onClick('southwark')">Southwark</div>
-      <div class="service-link" (click)="onClick('woking')">Woking</div>
-      <div class="service-link" (click)="onClick('lambeth')">Lambeth</div>
-      <div class="service-link" (click)="onClick('hl')">H&L</div>
-      <div class="service-link" (click)="onClick('all')">all</div>
-    <div class="http-response-buttons">
-        <a href="#" class="logout-button">Logout</a>
+
+    <!-- Quick Actions -->
+    <div class="nav-section">
+      <h4 class="nav-section-title">
+        <span class="material-icons">flash_on</span>
+        Quick Actions
+      </h4>
+      
+      <div class="nav-links">
+        <button class="nav-link">
+          <span class="material-icons">refresh</span>
+          <span class="nav-text">Refresh Data</span>
+        </button>
+        
+        <button class="nav-link">
+          <span class="material-icons">file_download</span>
+          <span class="nav-text">Export Report</span>
+        </button>
+        
+        <button class="nav-link">
+          <span class="material-icons">settings</span>
+          <span class="nav-text">Settings</span>
+        </button>
+      </div>
     </div>
+  </nav>
+
+  <!-- Footer Section -->
+  <div class="sidebar-footer">
+    <div class="user-info">
+      <div class="user-avatar">
+        <span class="material-icons">account_circle</span>
+      </div>
+      <div class="user-details">
+        <div class="user-name">Admin User</div>
+        <div class="user-role">Data Analyst</div>
+      </div>
+    </div>
+    
+    <button class="logout-button">
+      <span class="material-icons">logout</span>
+      <span class="logout-text">Logout</span>
+    </button>
+  </div>
 </div>

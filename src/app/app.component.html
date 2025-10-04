@@ -1,1 +1,42 @@
-<router-outlet></router-outlet>
+<div class="app-container">
+  <!-- Main Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="header-left">
+        <div class="logo-section">
+          <span class="material-icons logo-icon">account_balance</span>
+          <h1 class="app-title">Council Data Hub</h1>
+        </div>
+      </div>
+      <div class="header-right">
+        <nav class="header-nav">
+          <button class="nav-button">
+            <span class="material-icons">dashboard</span>
+            Dashboard
+          </button>
+          <button class="nav-button">
+            <span class="material-icons">analytics</span>
+            Analytics
+          </button>
+          <button class="nav-button">
+            <span class="material-icons">settings</span>
+            Settings
+          </button>
+        </nav>
+        <div class="user-section">
+          <button class="mobile-menu-toggle">
+            <span class="material-icons">menu</span>
+          </button>
+          <button class="user-button">
+            <span class="material-icons">account_circle</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="app-main fade-in">
+    <router-outlet></router-outlet>
+  </main>
+</div>

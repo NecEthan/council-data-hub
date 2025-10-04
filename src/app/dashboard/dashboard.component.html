@@ -1,2 +1,77 @@
-<app-side-menu (websiteName)="onClick($event)"></app-side-menu>
-<app-results-data [scrapedData]="scrapedData"></app-results-data>
+<div class="dashboard-container">
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar-wrapper">
+    <app-side-menu (websiteName)="onClick($event)"></app-side-menu>
+  </aside>
+  
+  <!-- Main Dashboard Content -->
+  <div class="dashboard-content">
+    <div class="content-wrapper">
+      <!-- Dashboard Header -->
+      <div class="dashboard-header">
+        <div class="header-info">
+          <h2 class="dashboard-title">Data Analytics Dashboard</h2>
+          <p class="dashboard-subtitle">Monitor and analyze council data across different boroughs</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-secondary">
+            <span class="material-icons">file_download</span>
+            Export Data
+          </button>
+          <button class="btn btn-primary">
+            <span class="material-icons">refresh</span>
+            Refresh
+          </button>
+        </div>
+      </div>
+      
+      <!-- Dashboard Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-blue">
+            <span class="material-icons">location_city</span>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">8</div>
+            <div class="stat-label">Active Councils</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-green">
+            <span class="material-icons">data_usage</span>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ (scrapedData.length || 0) | number }}</div>
+            <div class="stat-label">Total Records</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-orange">
+            <span class="material-icons">update</span>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">{{ getLastUpdateTime() }}</div>
+            <div class="stat-label">Last Updated</div>
+          </div>
+        </div>
+        
+        <div class="stat-card">
+          <div class="stat-icon-wrapper stat-icon-purple">
+            <span class="material-icons">trending_up</span>
+          </div>
+          <div class="stat-content">
+            <div class="stat-value">94%</div>
+            <div class="stat-label">Data Quality</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Main Data Table -->
+      <div class="data-section">
+        <app-results-data [scrapedData]="scrapedData"></app-results-data>
+      </div>
+    </div>
+  </div>
+</div>

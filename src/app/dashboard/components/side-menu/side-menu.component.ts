@@ -12,6 +12,8 @@ import { ScrapedService } from '../dashboard.service';
 export class SideMenuComponent {
 
   @Output() websiteName = new EventEmitter();
+  
+  selectedCouncil: string = 'all';
 
   constructor() {}
 
@@ -19,8 +21,8 @@ export class SideMenuComponent {
   }
 
   onClick(website: string) {
-    this.websiteName.emit(website)
+    this.selectedCouncil = website;
+    this.websiteName.emit(website);
   }
-
 
 }
