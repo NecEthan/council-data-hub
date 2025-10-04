@@ -14,12 +14,7 @@ export class SettingsComponent {
   userSettings = {
     name: 'Admin User',
     email: 'admin@councildatahub.com',
-    role: 'Data Analyst',
-    notifications: {
-      push: false,
-      dataUpdates: true,
-      systemAlerts: true
-    }
+    role: 'Data Analyst'
   };
 
   // Data Sources
