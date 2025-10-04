@@ -16,7 +16,6 @@ export class SettingsComponent {
     email: 'admin@councildatahub.com',
     role: 'Data Analyst',
     notifications: {
-      email: true,
       push: false,
       dataUpdates: true,
       systemAlerts: true
@@ -30,7 +29,6 @@ export class SettingsComponent {
     { name: 'Kingston Council API', status: 'inactive', lastSync: '2025-10-03 14:20' },
     { name: 'Southwark Council API', status: 'active', lastSync: '2025-10-04 09:28' },
     { name: 'Woking Council API', status: 'active', lastSync: '2025-10-04 09:32' },
-    { name: 'Lambeth Council API', status: 'error', lastSync: '2025-10-04 08:15' },
     { name: 'H&F Council API', status: 'active', lastSync: '2025-10-04 09:35' }
   ];
 

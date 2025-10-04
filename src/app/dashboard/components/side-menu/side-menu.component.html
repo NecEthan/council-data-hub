@@ -16,7 +16,19 @@
   <div class="search-section">
     <div class="search-container">
       <span class="material-icons search-icon">search</span>
-      <input type="text" placeholder="Search councils..." class="search-input">
+      <input 
+        type="text" 
+        placeholder="Search councils..." 
+        class="search-input"
+        [(ngModel)]="searchTerm"
+        (input)="onSearchChange($event)">
+      <button 
+        *ngIf="searchTerm" 
+        class="clear-search-btn" 
+        (click)="clearSearch()"
+        title="Clear search">
+        <span class="material-icons">close</span>
+      </button>
     </div>
   </div>
 
@@ -30,69 +42,27 @@
       
       <div class="nav-links">
         <button 
+          *ngFor="let council of filteredCouncils"
           class="nav-link" 
-          [class.active]="selectedCouncil === 'all'"
-          (click)="onClick('all')">
-          <span class="material-icons">select_all</span>
-          <span class="nav-text">All Councils</span>
-          <span class="nav-badge">8</span>
+          [class.active]="selectedCouncil === council.id"
+          (click)="onClick(council.name)">
+          <span class="material-icons">
+            {{ council.id === 'all' ? 'select_all' : 'place' }}
+          </span>
+          <span class="nav-text">{{ council.displayName }}</span>
+          <span *ngIf="council.count" class="nav-badge">{{ council.count }}</span>
         </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'richmond'"
-          (click)="onClick('richmond')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Richmond</span>
-        </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'epsom'"
-          (click)="onClick('epsom')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Epsom</span>
-        </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'kingston'"
-          (click)="onClick('kingston')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Kingston</span>
-        </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'southwark'"
-          (click)="onClick('southwark')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Southwark</span>
-        </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'woking'"
-          (click)="onClick('woking')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Woking</span>
-        </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'lambeth'"
-          (click)="onClick('lambeth')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Lambeth</span>
-        </button>
-        
-        <button 
-          class="nav-link" 
-          [class.active]="selectedCouncil === 'hl'"
-          (click)="onClick('hl')">
-          <span class="material-icons">place</span>
-          <span class="nav-text">Hammersmith & Fulham</span>
-        </button>
+      </div>
+      
+      <!-- No results message -->
+      <div *ngIf="filteredCouncils.length === 0" class="no-results">
+        <div class="no-results-content">
+          <span class="material-icons">search_off</span>
+          <div class="no-results-text">
+            <div class="no-results-title">No councils found</div>
+            <div class="no-results-subtitle">Try a different search term</div>
+          </div>
+        </div>
       </div>
     </div>
 
